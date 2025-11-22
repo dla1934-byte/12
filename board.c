@@ -1,10 +1,8 @@
 #if 0 
-void board_initBoard(void);
-int board_getBoardStatus(int pos);
+
 int board_getSharkPosition(void);
 int board_stepShark(void);
-int board_getBoardCoin(int pos);
-void board_printBoardStatus(void);
+
 #endif 
 
 #define N_BOARD               20
@@ -23,6 +21,8 @@ void board_printBoardStatus(void)
 {
      int i;
      printf("---------BOARD STATUS-------\n");
+     
+     
      for (i=0; i<N_BOARD; i++)
      {
           printf("|");
@@ -34,6 +34,18 @@ void board_printBoardStatus(void)
     printf("|\n");
     printf("-----------------------------\n");
      
+    printf("---------BOARD COIN-------\n");
+     
+     
+     for (i=0; i<N_BOARD; i++)
+     {
+          printf("|%i", board_coin[i]);
+       
+     }
+    printf("|\n");
+    printf("-----------------------------\n");
+     
+     
 }
 
 int board_getBoardStatus(int pos)
@@ -44,7 +56,9 @@ int board_getBoardStatus(int pos)
 
 int board_getBoardCoin(int pos)
 {
-    return board_coin[pos];
+    int coin= board_coin[pos];
+    board_coin[pos]=0;
+    return coin;
 }
 
 void board_initBoard(void)
